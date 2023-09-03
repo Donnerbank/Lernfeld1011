@@ -1,0 +1,15 @@
+{
+    "name": "vendor/src",
+    "description": "d\u0000ner",
+    "autoload": {
+        "psr-4": {
+            "Salmon\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Donnerbank"
+        }
+    ],
+    "require": {}
+}
