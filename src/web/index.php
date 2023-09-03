@@ -1,5 +1,6 @@
 <?php
 
+
 use infrastructure\Factory;
 use infrastructure\Router;
 use views\Renderer;

@@ -1,6 +1,11 @@
 {
     "name": "vendor/src",
     "description": "d\u0000ner",
+    "config": {
+        "platform": {
+            "php": "8.1"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Salmon\\": "src/"
