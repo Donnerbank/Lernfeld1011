@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . '/../../Configuration/Configuration.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 use infrastructure\Factory;
 use infrastructure\Router;
@@ -9,9 +11,6 @@ session_start();
 
 error_reporting(E_ERROR);
 ini_set('display_errors',true);
-
-require __DIR__ . '/../../Configuration/Configuration.php';
-require __DIR__ . '/../vendor/autoload.php';
 
 $render = new Renderer();
 $config = new Configuration();
