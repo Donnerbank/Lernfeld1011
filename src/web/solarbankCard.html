@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-b5GT12gR6m8vbv3z5n3tJXarSR5jgk7D3Y2Ffp6bP5fBb5tF5Bw5h5z5P5w5U5E5O5r5E5T5G5M5R5E5d5J5b5" crossorigin="anonymous">
-    <title>Kontakt Card</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">    <title>Kontakt Card</title>
+    <link rel="stylesheet" href="solarbankCard.css">
 </head>
 <body>
 <div class="container mt-5">
-    <div class="card" style="width: 18rem; background: aliceblue; border-style: dotted">
-        <div class="card-body">
-            <h5 class="card-title">Solarbank Wilhelmsburg</h5> 
+    <div class="card" style="width: 18rem; background: aliceblue;">
+        <div class="card-body" style="align-self: center;">
+            <h6 class="card-title">Solarbank Wilhelmsburg</h6>
+            <div class="backgroundAmpel">
+                <div class="ampel">
+                    <div class="lamp" id="lamp1"></div>
+                    <div class="lamp" id="lamp2"></div>
+                    <div class="lamp" id="lamp3"></div>
+                    <div class="lamp" id="lamp4"></div>
+                </div>
+            </div>
+            <script src="script.js"></script>
         </div>
-        <ul class="list-group list-group-flush">
+        <ul class="list-group list-group-flush" style="text-align: center;">
             <li class="list-group-item">Aktuelle Leistung: 720 kW/h</li>
             <li class="list-group-item">geschätze Ladezeit: 1h 21 sec.</li>
             <li class="list-group-item">Anreisedauer: 22 min.</li>
@@ -23,7 +32,8 @@
     </div>
 </div>
 
+
 <!-- Bootstrap JavaScript (optional) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-X8vfx5Qt3p4HqOLv6o3Z/5F5f5og4g5m5R5m5E5f5T5G5M5R5E5d5J5b5" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
