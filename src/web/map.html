@@ -24,16 +24,13 @@
             maxZoom: 19,
         }).addTo(map);
 
-        cardContent =
-            fetch('solarbankCard.html')
+        var cardContent = '';
+
+        fetch('solarbankCard.html')
             .then(response => response.text())
             .then(htmlContent => {
-                L.popup()
-                    .setLatLng([53.5067, 9.9871])
-                    .setContent(htmlContent)
-                    .openOn(map);
+                cardContent = htmlContent;
             });
-        // script.js wird nicht ausgeführt!
 
         var pinIcon = L.icon({
             iconUrl: 'pin.png', // Pfad zur Stecknadel-Bilddatei
@@ -41,18 +38,15 @@
             iconAnchor: [16, 32], // Verankerungspunkt der Stecknadel
         });
 
-        // var cardContent = '<div class="card">' +
-        //    '<h2>Wilhelmsburg</h2>' +
-        //    '<p>Ein Ort in Hamburg.</p>' +
-        //    '</div>';
-
         var marker = L.marker([53.5067, 9.9871], { icon: pinIcon }).addTo(map);
 
         marker.on('click', function() {
-            L.popup()
-                .setContent(cardContent)
-                .setLatLng(marker.getLatLng())
-                .openOn(map);
+            if (cardContent) {
+                L.popup()
+                    .setContent(cardContent)
+                    .setLatLng(marker.getLatLng())
+                    .openOn(map);
+            }
         });
     </script>
 </body>
