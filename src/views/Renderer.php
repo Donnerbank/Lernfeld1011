@@ -1,6 +1,6 @@
 <?php
 
-namespace views;
+namespace Lernfeld1011\views;
 
 use Exception;
 
