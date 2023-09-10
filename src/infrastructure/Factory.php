@@ -15,4 +15,9 @@ class Factory
     {
         return new SolarBankMapper($this);
     }
+
+    public function getWeatherNodeMapper(): WeatherNodeMapper
+    {
+        return new WeatherNodeMapper($this);
+    }
 }
