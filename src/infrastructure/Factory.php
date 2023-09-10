@@ -10,4 +10,9 @@ class Factory
     {
         $this->configuration = $configuration;
     }
+
+    public function getSolarBankMapper(): SolarBankMapper
+    {
+        return new SolarBankMapper($this);
+    }
 }
