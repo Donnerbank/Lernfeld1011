@@ -8,7 +8,7 @@ RewriteEngine on
 
 # set your rewrite base
 # Edit this in your init method too if you script lives in a subfolder
-RewriteBase /src/web
+RewriteBase /Lernfeld1011/src/web
 
 # Deliver the folder or file directly if it exists on the server
 #das er nur in den WEB Ordner sehen darf

@@ -16,5 +16,7 @@
             "name": "Donnerbank"
         }
     ],
-    "require": {}
+    "require": {
+        "laravel/pint": "^1.13"
+    }
 }

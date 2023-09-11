@@ -1,11 +1,13 @@
 <?php
 
-// solarbank: soll standort haben (koordinate), name, ampelwert (1-4), kilowattleistung (terrestial radiation + ?)
 class SolarBank
 {
     private Coordinate $coordinate;
+
     private string $name;
+
     private int $trafficLightValue;
+
     private int $kilowattPower;
 
     public function __construct(Coordinate $coordinate, string $name, int $trafficLightValue, int $kilowattPower)

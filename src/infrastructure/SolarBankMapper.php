@@ -7,8 +7,8 @@ use SolarBank;
 
 class SolarBankMapper
 {
-
     private $factory;
+
     public function __construct(Factory $factory)
     {
         $this->factory = $factory;
@@ -21,23 +21,38 @@ class SolarBankMapper
         $name = '';
         $trafficLightValue = 0;
         $kilowattPower = 0;
-        if(!empty($arr['longitude'])) $long = floatval($arr['longitude']);
-        if(!empty($arr['long'])) $long = floatval($arr['long']);
-        if(!empty($arr['latitude'])) $lat = floatval($arr['latitude']);
-        if(!empty($arr['lat'])) $lat = floatval($arr['lat']);
-        if(!empty($arr['name'])) $name = $arr['name'];
-        if(!empty($arr['trafficLightValue']) && intval($arr['trafficLightValue']) > 0 && intval($arr['trafficLightValue']) < 5)
+        if (! empty($arr['longitude'])) {
+            $long = floatval($arr['longitude']);
+        }
+        if (! empty($arr['long'])) {
+            $long = floatval($arr['long']);
+        }
+        if (! empty($arr['latitude'])) {
+            $lat = floatval($arr['latitude']);
+        }
+        if (! empty($arr['lat'])) {
+            $lat = floatval($arr['lat']);
+        }
+        if (! empty($arr['name'])) {
+            $name = $arr['name'];
+        }
+        if (! empty($arr['trafficLightValue']) && intval($arr['trafficLightValue']) > 0 && intval($arr['trafficLightValue']) < 5) {
             $trafficLightValue = $arr['trafficLightValue'];
-        if(!empty($arr['ampelWert']) && intval($arr['ampelWert']) > 0 && intval($arr['ampelWert']) < 5)
+        }
+        if (! empty($arr['ampelWert']) && intval($arr['ampelWert']) > 0 && intval($arr['ampelWert']) < 5) {
             $trafficLightValue = $arr['ampelWert'];
-        if(!empty($arr['kilowattPower'])) $kilowattPower = $arr['kilowattPower'];
-        $coordinate = Coordinate::fromFloat($long,$lat);
-        return new SolarBank($coordinate,$name,$trafficLightValue,$kilowattPower);
+        }
+        if (! empty($arr['kilowattPower'])) {
+            $kilowattPower = $arr['kilowattPower'];
+        }
+        $coordinate = Coordinate::fromFloat($long, $lat);
+
+        return new SolarBank($coordinate, $name, $trafficLightValue, $kilowattPower);
     }
 
     public function fromJSON(string $json): SolarBank
     {
-        return $this->fromArray(json_decode($json,true));
+        return $this->fromArray(json_decode($json, true));
     }
 
     public function toArray(SolarBank $solarBank): array
@@ -53,10 +68,11 @@ class SolarBankMapper
         $arr['val'] = $solarBank->getTrafficLightValue();
         $arr['kilowattPower'] = $solarBank->getKilowattPower();
         $arr['power'] = $solarBank->getKilowattPower();
+
         return $arr;
     }
 
-    public function toJSON(SolarBank $solarBank):string
+    public function toJSON(SolarBank $solarBank): string
     {
         return json_encode($this->toArray($solarBank));
     }

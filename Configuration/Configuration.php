@@ -4,6 +4,6 @@ class Configuration
 {
     public function getRouterBase(): string
     {
-        return '/src/web';
+        return '/Lernfeld1011/src/web';
     }
 }

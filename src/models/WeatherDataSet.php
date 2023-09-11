@@ -2,21 +2,24 @@
 
 class WeatherDataSet
 {
-
     /** @var int timestamp */
     private int $time;
+
     private float $temperature;
+
     private float $terrestrialRadiation;
+
     private float $terrestrialRadiationInstant;
+
     private float $uvIndex;
 
     private float $uvIndexClearSky;
 
     public function __construct(int $time, float $temperature, float $terrestrialRadiation, float $terrestrialRadiationInstant,
-    float $uvIndex, float $uvIndexClearSky)
+        float $uvIndex, float $uvIndexClearSky)
     {
         $this->time = $time;
-        $this-> temperature = $temperature;
+        $this->temperature = $temperature;
         $this->terrestrialRadiation = $terrestrialRadiation;
         $this->terrestrialRadiationInstant = $terrestrialRadiationInstant;
         $this->uvIndex = $uvIndex;
@@ -52,6 +55,4 @@ class WeatherDataSet
     {
         return $this->uvIndexClearSky;
     }
-
-
 }

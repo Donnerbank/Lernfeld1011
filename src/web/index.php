@@ -1,16 +1,12 @@
 <?php
 
-namespace Lernfeld1011\web;
-
-require __DIR__ . '/../../Configuration/Configuration.php';
-require __DIR__ . '/../vendor/autoload.php';
-
-use Configuration;
-use Exception;
-use infrastructure\Factory;
-use infrastructure\Router;
+use Lernfeld1011\controllers\RestAPI;
+use Lernfeld1011\infrastructure\Factory;
+use Lernfeld1011\infrastructure\Router;
 use Lernfeld1011\views\Renderer;
 
+require __DIR__.'/../../Configuration/Configuration.php';
+require __DIR__.'/../../vendor/autoload.php';
 
 //ToDo
 //autoloader
@@ -19,30 +15,29 @@ use Lernfeld1011\views\Renderer;
 session_start();
 
 error_reporting(E_ERROR);
-ini_set('display_errors',true);
+ini_set('display_errors', true);
 
 $render = new Renderer();
 $config = new Configuration();
 $factory = new Factory($config);
 
 //All Routes
-try
-{
-/*    Router::add('/addresseHere', function () use ($render, $factory)
-    {
-        $controller = new ???Controler($render, $factory);
-        $controller->doSomething();
-    });*/
+try {
+    Router::add('/api/v1/controllername/method/parameter1/parameter2/parameter3', function () {
+        echo 'banana';
+    });
 
-    Router::pathNotFound(function()
-    {
+    Router::add('/api/v1/restapi/amethod', function () {
+        $controller = new RestAPI();
+        $s = $controller->aMethod();
+        echo $s;
+    });
+    Router::pathNotFound(function () {
         echo 'Es wurde keine Route gefunden.';
     });
 
     Router::run($config->getRouterBase());
-}
-catch (Exception $exception)
-{
+} catch (Exception $exception) {
     echo 'Fehler. Error Controller hier.';
 }
-die();
+exit();
