@@ -15,8 +15,6 @@ use Lernfeld1011\views\Renderer;
 //ToDo
 //autoloader
 //restAPI
-//weather model: json darstellt
-// solarbank: soll standort haben (koordinate), name, ampelwert (1-4), kilowattleistung (terrestial radiation + ?)
 // nächster Block datenbank
 session_start();
 
