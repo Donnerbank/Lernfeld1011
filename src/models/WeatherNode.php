@@ -3,10 +3,10 @@
 class WeatherNode
 {
 
-    private $coordinate;
+    private Coordinate $coordinate;
 
-    /** @var <int, WeatherDataSet> */
-    private $hourlyWeatherData;
+    /** @var array<int, WeatherDataSet> */
+    private array $hourlyWeatherData;
 
     public function __construct(Coordinate $coordinate)
     {

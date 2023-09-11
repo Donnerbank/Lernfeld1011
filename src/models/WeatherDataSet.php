@@ -4,13 +4,13 @@ class WeatherDataSet
 {
 
     /** @var int timestamp */
-    private $time;
-    private $temperature;
-    private $terrestrialRadiation;
-    private $terrestrialRadiationInstant;
-    private $uvIndex;
+    private int $time;
+    private float $temperature;
+    private float $terrestrialRadiation;
+    private float $terrestrialRadiationInstant;
+    private float $uvIndex;
 
-    private $uvIndexClearSky;
+    private float $uvIndexClearSky;
 
     public function __construct(int $time, float $temperature, float $terrestrialRadiation, float $terrestrialRadiationInstant,
     float $uvIndex, float $uvIndexClearSky)
