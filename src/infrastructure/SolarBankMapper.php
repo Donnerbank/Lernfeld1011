@@ -1,9 +1,10 @@
 <?php
 
-namespace infrastructure;
+namespace Lernfeld1011\infrastructure;
 
-use Coordinate;
-use SolarBank;
+use Lernfeld1011\infrastructure\Factory;
+use Lernfeld1011\models\Coordinate;
+use Lernfeld1011\models\SolarBank;
 
 class SolarBankMapper
 {

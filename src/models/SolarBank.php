@@ -1,4 +1,5 @@
 <?php
+namespace Lernfeld1011\models;
 
 class SolarBank
 {

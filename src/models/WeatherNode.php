@@ -1,6 +1,6 @@
 <?php
 
-use Lernfeld1011\models\Date;
+namespace Lernfeld1011\models;
 
 class WeatherNode
 {
@@ -36,7 +36,7 @@ class WeatherNode
         return $this->hourlyWeatherData;
     }
 
-    public function getDate(): string
+    public function getDate(): Date
     {
         return $this->date;
     }

@@ -1,11 +1,11 @@
 <?php
 
-namespace infrastructure;
+namespace Lernfeld1011\infrastructure;
 
-use Coordinate;
-use Lernfeld1011\infrastructure\Factory;
-use WeatherDataSet;
-use WeatherNode;
+
+use Lernfeld1011\models\Coordinate;
+use Lernfeld1011\models\WeatherDataSet;
+use Lernfeld1011\models\WeatherNode;
 
 class WeatherNodeMapper
 {

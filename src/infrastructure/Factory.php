@@ -2,8 +2,6 @@
 
 namespace Lernfeld1011\infrastructure;
 
-use infrastructure\SolarBankMapper;
-use infrastructure\WeatherNodeMapper;
 
 class Factory
 {

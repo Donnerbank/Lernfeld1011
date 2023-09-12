@@ -1,5 +1,6 @@
 <?php
 
+namespace Lernfeld1011\models;
 class WeatherDataSet
 {
     /** @var int timestamp */
