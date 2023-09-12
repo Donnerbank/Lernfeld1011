@@ -74,10 +74,10 @@ class Router
                     array_shift($matches); //always remove first element. This contains whole string
 
                     if ($basepath != '' && $basepath != '/') {
-                        array_shift($matches); //remove basepath
+                        array_shift($matches); //remove basepath (basepath e.g. src/web/
                         // matches contains only the relevant information
-                        // bsp: Path: /api/v1/controllername/method/parameter1/parameter2/parameter3
-                        // after double array_shift $matches should look like: [2 => controllername,  3 => method,
+                        // e.g.: Path: src/web/api/v1/controllername/method/parameter1/parameter2/parameter3
+                        // after double array_shift $matches should look like: [0 => api, 1 => v1, 2 => controllername,  3 => method,
                         //  4 => parameter1, 5 => parameter2, 6 => parameter3]
                     }
                     // call the defined function with all the matches as array
