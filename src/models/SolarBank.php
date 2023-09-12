@@ -1,14 +1,18 @@
 <?php
 namespace Lernfeld1011\models;
 
+/** Our Model for containing and working with the SolarBank data. */
 class SolarBank
 {
+    /** @var Coordinate Contains the geographical coordinates */
     private Coordinate $coordinate;
 
     private string $name;
 
+    /** @var int a value that indicates how active this Solar Bank is. (1-4) */
     private int $trafficLightValue;
 
+    /** @var int Average Power that can be used to charge phones */
     private int $kilowattPower;
 
     public function __construct(Coordinate $coordinate, string $name, int $trafficLightValue, int $kilowattPower)

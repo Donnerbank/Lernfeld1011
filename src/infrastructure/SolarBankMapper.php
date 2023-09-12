@@ -2,10 +2,12 @@
 
 namespace Lernfeld1011\infrastructure;
 
-use Lernfeld1011\infrastructure\Factory;
 use Lernfeld1011\models\Coordinate;
 use Lernfeld1011\models\SolarBank;
 
+/**
+ * Maps an array or a json string to a SolarBank Object and vice versa.
+ */
 class SolarBankMapper
 {
     private $factory;
@@ -17,11 +19,15 @@ class SolarBankMapper
 
     public function fromArray(array $arr): SolarBank
     {
+        // Sets a default value, if the given is not valid
         $long = 0;
         $lat = 0;
         $name = '';
         $trafficLightValue = 0;
         $kilowattPower = 0;
+
+        // Checks the array for values, validates and assigns them
+        // Coordinate attributes must be float values.
         if (! empty($arr['longitude'])) {
             $long = floatval($arr['longitude']);
         }
@@ -37,6 +43,7 @@ class SolarBankMapper
         if (! empty($arr['name'])) {
             $name = $arr['name'];
         }
+        // Traffic Light Value should be between 1 and 4
         if (! empty($arr['trafficLightValue']) && intval($arr['trafficLightValue']) > 0 && intval($arr['trafficLightValue']) < 5) {
             $trafficLightValue = $arr['trafficLightValue'];
         }
@@ -48,7 +55,7 @@ class SolarBankMapper
         }
         $coordinate = Coordinate::fromFloat($long, $lat);
 
-        return new SolarBank($coordinate, $name, $trafficLightValue, $kilowattPower);
+        return $this->factory->createSolarBank($coordinate,$name,$trafficLightValue,$kilowattPower);
     }
 
     public function fromJSON(string $json): SolarBank
@@ -59,10 +66,12 @@ class SolarBankMapper
     public function toArray(SolarBank $solarBank): array
     {
         $arr = [];
+        // Receives Values from SolarBank Object
         $arr['longitude'] = $solarBank->getCoordinate()->getLongitude();
         $arr['long'] = $solarBank->getCoordinate()->getLongitude();
         $arr['latitude'] = $solarBank->getCoordinate()->getLatitude();
         $arr['lat'] = $solarBank->getCoordinate()->getLatitude();
+        // Puts Coordinate as readable string
         $arr['coordinate'] = $solarBank->getCoordinate()->getCoordinateAsString();
         $arr['name'] = $solarBank->getName();
         $arr['trafficLightValue'] = $solarBank->getTrafficLightValue();
