@@ -10,7 +10,7 @@ use Lernfeld1011\models\SolarBank;
  */
 class SolarBankMapper
 {
-    private $factory;
+    private Factory $factory;
 
     public function __construct(Factory $factory)
     {
@@ -55,7 +55,7 @@ class SolarBankMapper
         }
         $coordinate = Coordinate::fromFloat($long, $lat);
 
-        return $this->factory->createSolarBank($coordinate,$name,$trafficLightValue,$kilowattPower);
+        return $this->factory->createSolarBank($coordinate, $name, $trafficLightValue, $kilowattPower);
     }
 
     public function fromJSON(string $json): SolarBank

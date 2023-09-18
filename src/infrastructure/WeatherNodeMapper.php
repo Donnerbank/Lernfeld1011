@@ -2,11 +2,12 @@
 
 namespace Lernfeld1011\infrastructure;
 
-
 use Lernfeld1011\models\Coordinate;
 use Lernfeld1011\models\Date;
+use Lernfeld1011\models\DateTime;
 use Lernfeld1011\models\WeatherDataSet;
 use Lernfeld1011\models\WeatherNode;
+
 /**
  * Maps an array or a json string to a WeatherNode Object and vice versa.
  * Expects the json from the extern WeatherAPI and translates them.
@@ -27,7 +28,7 @@ class WeatherNodeMapper
         $long = 0;
         $lat = 0;
         // timestamp = 0
-        $date = Date::createFromIntegers(1,1,1970);
+        $date = Date::createFromIntegers(1, 1, 1970);
 
         // extracting and checking array values
         if (! empty($arr['longitude'])) {
@@ -41,7 +42,7 @@ class WeatherNodeMapper
         }
         $coordinate = Coordinate::fromFloat($lat, $long);
         // create a new WeatherNode. This one has no WeatherData yet.
-        $weatherNode = $this->factory->createWeatherNode($coordinate,$date);
+        $weatherNode = $this->factory->createWeatherNode($coordinate, $date);
 
         if (! empty($arr['hourly'])) {
             $index = 0;
@@ -58,9 +59,10 @@ class WeatherNodeMapper
             $uvICSData = array_values($hourData['uv_index_clear_sky']);
             // Index represents hour of the day (0-23)
             while ($index < 24) {
+                $date = DateTime::createFromExternFormat($timeData[$index]);
                 // Creates a WeatherDataSet. Uses a default if the value at $index is not set.
                 $weatherDataSet = $this->factory->createWeatherDataSet(
-                    $timeData[$index] ?? 0,
+                    $date->getTimestamp() ?? 0,
                     $tempData[$index] ?? -273.15,
                     $trData[$index] ?? 0.0,
                     $triData[$index] ?? 0.0,

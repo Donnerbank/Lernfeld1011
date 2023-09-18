@@ -11,6 +11,8 @@ class Date
 
     private int $year;
 
+    //TODO: DateTime Object
+
     /** private Contructor */
     private function __construct(int $day, int $month, int $year)
     {
@@ -26,6 +28,14 @@ class Date
         return new self($day, $month, $year);
     }
 
+    public static function createFromExternFormat(string $time): self
+    {
+        $date = date('Y-m-d H:i:s', strtotime($time));
+        $a = \DateTime::createFromFormat('Y-m-d H:i:s', $date);
+
+        return new self($a->format('d'), $a->format('m'), $a->format('Y'));
+    }
+
     /** Throws exception if not valid.
      * We use the DateTime Object from PHP to verify if the given Date is valid.
      * DateTime::createFromFormat() returns false if the Date is incorrect.
@@ -36,6 +46,13 @@ class Date
         if (! $dateTime) {
             throw new \Exception('Invalid Date');
         }
+    }
+
+    public function getTimestamp(): int
+    {
+        $dateTime = \DateTime::createFromFormat('d.m.Y', $this->day.'.'.$this->month.'.'.$this->year);
+
+        return $dateTime->getTimestamp();
     }
 
     public function getDay(): int

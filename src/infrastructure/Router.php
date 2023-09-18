@@ -90,7 +90,7 @@ class Router
         }
         //route missed
         if (! $routeMatchFound) {
-            if (! $pathMatchFound) {
+            if ($pathMatchFound) {
                 header('HTTP/1.0 405 Method not allowed');
                 if (self::$methodNotAllowed) {
                     call_user_func_array(self::$methodNotAllowed, [$path, $httpMethod]);

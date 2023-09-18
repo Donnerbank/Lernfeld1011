@@ -35,17 +35,22 @@ class Factory
 
     public function createSolarBank(Coordinate $coordinate, string $name, int $trafficLightValue, int $kilowattPower): SolarBank
     {
-        return new SolarBank($coordinate,$name,$trafficLightValue,$kilowattPower);
+        return new SolarBank($coordinate, $name, $trafficLightValue, $kilowattPower);
     }
 
-    public function createWeatherNode(Coordinate $coordinate, Date $date) : WeatherNode
+    public function createWeatherNode(Coordinate $coordinate, Date $date): WeatherNode
     {
         return new WeatherNode($coordinate, $date);
     }
 
     public function createWeatherDataSet(int $time, float $temperature, float $terrestrialRadiation,
-                                         float $terrestrialRadiationInstant,float $uvIndex, float $uvIndexClearSky): WeatherDataSet
+        float $terrestrialRadiationInstant, float $uvIndex, float $uvIndexClearSky): WeatherDataSet
     {
         return new WeatherDataSet($time, $temperature, $terrestrialRadiation, $terrestrialRadiationInstant, $uvIndex, $uvIndexClearSky);
+    }
+
+    public function createOpenMeteoClient(): OpenMeteoClient
+    {
+        return new OpenMeteoClient($this);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Lernfeld1011\models;
 
 /** Our Model for containing and working with the SolarBank data. */
@@ -15,8 +16,12 @@ class SolarBank
     /** @var int Average Power that can be used to charge phones */
     private int $kilowattPower;
 
+    private string $uuid;
+    // Till sagt UUID value Object. Wird nach außen übergeben um die Solar Bank in der Datenbank anzusprechen
+
     public function __construct(Coordinate $coordinate, string $name, int $trafficLightValue, int $kilowattPower)
     {
+        $this->uuid = uniqid();
         $this->coordinate = $coordinate;
         $this->name = $name;
         $this->trafficLightValue = $trafficLightValue;

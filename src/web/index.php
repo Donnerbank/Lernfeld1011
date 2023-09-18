@@ -18,22 +18,32 @@ $config = new Configuration();
 $factory = new Factory($config);
 
 // Add Routes to our Router
+// CI: https://github.com/tillmannschiffler/simplequeue/blob/main/.github/workflows/integrate.yaml
 try {
-/*      Example Routing
-        Router::add('/api/v1/controllername/method/parameter1/parameter2/parameter3', function () {
-        $controller = new ControllerName();
-        $controller->method(parameter1,parameter2,parameter3);
-    });*/
+    /*      Example Routing
+            Router::add('/api/v1/controllername/method/parameter1/parameter2/parameter3', function () {
+            $controller = new ControllerName();
+            $controller->method(parameter1,parameter2,parameter3);
+        });*/
 
     // test the Routing
-    Router::add('/api/v1/restapi/amethod', function () {
-        $controller = new RestAPI();
+    Router::add('/api/v1/restapi/amethod', function () use ($factory) {
+        $controller = new RestAPI($factory);
         $s = $controller->aMethod();
         echo $s;
-    });
+    }, 'get');
+    Router::add('/api/v1/restapi/test', function () use ($factory) {
+        $controller = new RestAPI($factory);
+        $s = $controller->getWeatherNode('');
+        echo $s;
+    }, 'get');
     // Error in case Route was not found
     Router::pathNotFound(function () {
         echo 'Es wurde keine Route gefunden.';
+    });
+
+    Router::methodNotAllowed(function () {
+        echo 'Method not allowed';
     });
     // run the Router and check for matched Path
     Router::run($config->getRouterBase());

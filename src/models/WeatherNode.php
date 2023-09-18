@@ -8,7 +8,6 @@ class WeatherNode
     /** @var Coordinate Geographical Location of this Weather Node */
     private Coordinate $coordinate;
 
-
     /** @var array<int, WeatherDataSet>
      * contains the hourly Weather Data.
      * Uses the hour of the day as key for searching and sorting purposes. */
@@ -21,7 +20,7 @@ class WeatherNode
     {
         $this->coordinate = $coordinate;
         $this->date = $date;
-        // The hourly Weather Data is initilaized as ampty array.
+        // The hourly Weather Data is initilaized as empty array.
         $this->hourlyWeatherData = [];
     }
 

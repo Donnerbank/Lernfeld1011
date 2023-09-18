@@ -1,6 +1,7 @@
 <?php
 
 namespace Lernfeld1011\models;
+
 use InvalidArgumentException;
 
 /**
@@ -34,6 +35,7 @@ class Coordinate
      */
     public static function isValid(float $val): bool
     {
+        // TODO: Max und Min
         if (! is_float($val)) {
             return false;
         }
