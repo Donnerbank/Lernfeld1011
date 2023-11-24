@@ -1,0 +1,11 @@
+
+{
+  "name": "Donnerbank/lernfeld1011",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Donnerbank/lernfeld1011.git"
+  },
+  "publishConfig": {
+    "Donnerbank:registry": "https://npm.pkg.github.com"
+  }
+}
