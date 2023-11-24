@@ -18,6 +18,7 @@
     ],
     "require": {
         "laravel/pint": "^1.13",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "phpunit/phpunit": "^9.5"
     }
 }
