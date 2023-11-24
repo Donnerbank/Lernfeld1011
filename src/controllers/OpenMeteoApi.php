@@ -22,4 +22,9 @@ class OpenMeteoApi
         $url = sprintf($this->url,$coordinate->getLatitude(), $coordinate->getLongitude());
         return $this->mapper->fromJSON(file_get_contents($url));
     }
+
+    public function getMapper(): WeatherNodeMapper
+{
+    return $this->mapper;
+}
 }

@@ -16,27 +16,29 @@ class Coordinate
     /** Private Contructor. Use fromFloat() method. Easier to read for programmer. */
     private function __construct(float $latitude, float $longitude)
     {
-        $this->ensureIsValid($longitude);
-        $this->ensureIsValid($latitude);
+        $this->ensureIsValid($longitude, $latitude);
         $this->longitude = $longitude;
         $this->latitude = $latitude;
     }
 
     /** Throws Exception if not valid */
-    private function ensureIsValid(float $val): void
+    private function ensureIsValid(float $long, float $lat): void
     {
-        if (! self::isValid($val)) {
-            throw new InvalidArgumentException(sprintf('Der Angegebene Wert %s passt nicht zu einer Koordinate', $val));
+        if (! self::isValid($long, $lat)) {
+            throw new InvalidArgumentException(sprintf('Longitude must be between 180 and - 180, currently is: %s \n Latitude must be between 90 and -90, currently is: %s', $long,$lat));
         }
     }
 
     /** We have no proper validation yet. So far we accept all floats.
      * This function exists in case we find limits we need to validate
      */
-    public static function isValid(float $val): bool
+    public static function isValid(float $long, float $lat): bool
     {
         // TODO: Max und Min
-        if (! is_float($val)) {
+        if ($long > 180 || $long < -180) {
+            return false;
+        }
+        if ($lat > 90 || $lat < -90) {
             return false;
         }
 

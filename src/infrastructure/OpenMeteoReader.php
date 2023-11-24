@@ -25,6 +25,6 @@ class OpenMeteoReader
     {
         $data = file_get_contents(__DIR__.'/../../testWeather.json');
 
-        return $this->factory->getWeatherNodeMapper()->fromJSON($data);
+        return $this->meteoApi->getMapper()->fromJSON($data);
     }
 }
