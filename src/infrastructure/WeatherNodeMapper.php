@@ -90,6 +90,11 @@ class WeatherNodeMapper
         $arr = [];
         // Index is going to be the hour of the day (0-23)
         $index = 0;
+        $arr['longitude'] = $weatherNode->getCoordinate()->getLongitude();
+        $arr['long'] = $weatherNode->getCoordinate()->getLongitude();
+        $arr['latitude'] = $weatherNode->getCoordinate()->getLatitude();
+        $arr['lat'] = $weatherNode->getCoordinate()->getLatitude();
+        $arr['coordinate'] = $weatherNode->getCoordinate()->getCoordinateAsString();
         foreach ($weatherNode->getHourlyWeatherData() as $time => $dataSet) {
             // adds a sub-array to the main array with the hourly weather data. The key is the hour of the day.
             $weatherData[$index]['time'] = $time;
@@ -102,11 +107,7 @@ class WeatherNodeMapper
         }
         // assign the above constructed array as sub-array
         $arr['hourlyWeatherData'] = $weatherData;
-        $arr['longitude'] = $weatherNode->getCoordinate()->getLongitude();
-        $arr['long'] = $weatherNode->getCoordinate()->getLongitude();
-        $arr['latitude'] = $weatherNode->getCoordinate()->getLatitude();
-        $arr['lat'] = $weatherNode->getCoordinate()->getLatitude();
-        $arr['coordinate'] = $weatherNode->getCoordinate()->getCoordinateAsString();
+
 
         return $arr;
     }

@@ -53,9 +53,10 @@ class SolarBankMapper
         if (! empty($arr['kilowattPower'])) {
             $kilowattPower = $arr['kilowattPower'];
         }
+
         $coordinate = Coordinate::fromFloat($long, $lat);
 
-        return $this->factory->createSolarBank($coordinate, $name, $trafficLightValue, $kilowattPower);
+        return $this->factory->createSolarBank($coordinate, $name, $trafficLightValue, $kilowattPower, $arr['uuid']??'');
     }
 
     public function fromJSON(string $json): SolarBank
