@@ -6,7 +6,7 @@ use Lernfeld1011\infrastructure\Factory;
 use Lernfeld1011\infrastructure\Router;
 use Lernfeld1011\views\Renderer;
 
-require __DIR__.'/../../Configuration/Configuration.php';
+require __DIR__.'/../Configuration/Configuration.php';
 require __DIR__.'/../../vendor/autoload.php';
 
 session_start();
@@ -40,6 +40,19 @@ try {
 
         $s = $controller->getWeatherNode($uuid);
         echo $s;
+    }, 'get');
+    Router::add('/api/v1/restapi/addSolarBank', function () use ($factory)
+    {
+        // SolarBank neu anlegen. Benötigt: Name, Longitute, Latitude
+        // optional: trafficlightvalue, kilowattpower
+    }, 'get');
+    // 63fd87a9B-654fA-46d7N-bef9A-f81bNc360A104b
+    Router::add('/api/v1/restapi/getSolarBankData/(.*)', function ($uuid) use ($factory)
+    {
+        $controller = new RestApi($factory);
+        $uuid = \Lernfeld1011\models\SolarBankUUID::fromString($uuid);
+        $factory->createSolarBankReader()->readByUuid($uuid);
+        echo $controller->getWeatherNode($uuid);
     }, 'get');
     Router::add('/api/v1/restapi/getHamburgWeatherData', function () use ($factory) {
         $controller = new RestApi($factory);
