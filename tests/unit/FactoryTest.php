@@ -1,7 +1,8 @@
 <?php
 
 namespace unit;
-use Configuration\Configuration;
+
+use Configuration;
 use PHPUnit\Framework\TestCase;
 
 class FactoryTest extends TestCase
