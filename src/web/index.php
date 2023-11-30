@@ -1,5 +1,6 @@
 <?php
 
+use Lernfeld1011\Configuration\Configuration;
 use Lernfeld1011\controllers\RestApi;
 use Lernfeld1011\infrastructure\Factory;
 use Lernfeld1011\infrastructure\Router;

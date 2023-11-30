@@ -20,9 +20,9 @@ class Factory
     /*
      * Configuration for Future Database accesses
      */
-    private \Configuration $configuration;
+    private \Lernfeld1011\Configuration\Configuration $configuration;
 
-    public function __construct(\Configuration $configuration)
+    public function __construct(\Lernfeld1011\Configuration\Configuration $configuration)
     {
         $this->configuration = $configuration;
     }
