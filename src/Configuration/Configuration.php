@@ -1,6 +1,6 @@
 <?php
 
-namespace Configuration;
+namespace Lernfeld1011\Configuration;
 /**
  * Base Configuration
  */

@@ -2,7 +2,7 @@
 
 namespace unit;
 
-use Configuration\Configuration;
+use Lernfeld1011\Configuration\Configuration;
 use PHPUnit\Framework\TestCase;
 
 class FactoryTest extends TestCase
