@@ -43,9 +43,11 @@ try {
     Router::add('/api/v1/restapi/addSolarBank', function () use ($factory)
     {
         $json = file_get_contents('php://input');
-        echo $json;
+        if(empty($json))
+            throw new Exception('Provided SolarBank Data is empty.');
+        $controller = new RestApi($factory);
+        echo json_encode(['Success' => $controller->addSolarBank($json)]);
     }, 'get');
-    // 63fd87a9B-654fA-46d7N-bef9A-f81bNc360A104b
     Router::add('/api/v1/restapi/getSolarBankData/(.*)', function ($uuid) use ($factory)
     {
         throw new Exception('Not Supported');

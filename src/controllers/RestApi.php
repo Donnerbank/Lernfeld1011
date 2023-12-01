@@ -51,4 +51,11 @@ class RestApi
         //return $this->factory->createSolarBankWriter()->insert($solarBank);
         return $this->factory->getWeatherNodeMapper()->toJSON($this->factory->createOpenMeteoReader()->getWeatherData($solarBank->getCoordinate()));
     }
+
+    public function addSolarBank(string $json): bool
+    {
+        $solarBank = $this->factory->getSolarBankMapper()->fromJSON($json);
+        if(empty($solarBank->getName())) return false;
+        return $this->factory->createSolarBankWriter()->insert($solarBank);
+    }
 }
