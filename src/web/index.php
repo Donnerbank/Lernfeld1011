@@ -19,7 +19,6 @@ $config = new Configuration();
 $factory = new Factory($config);
 
 // Add Routes to our Router
-// CI: https://github.com/tillmannschiffler/simplequeue/blob/main/.github/workflows/integrate.yaml
 try {
     /*      Example Routing
             Router::add('/api/v1/controllername/method/parameter1/parameter2/parameter3', function () {
@@ -43,12 +42,13 @@ try {
     }, 'get');
     Router::add('/api/v1/restapi/addSolarBank', function () use ($factory)
     {
-        // SolarBank neu anlegen. Benötigt: Name, Longitute, Latitude
-        // optional: trafficlightvalue, kilowattpower
+        $json = file_get_contents('php://input');
+        echo $json;
     }, 'get');
     // 63fd87a9B-654fA-46d7N-bef9A-f81bNc360A104b
     Router::add('/api/v1/restapi/getSolarBankData/(.*)', function ($uuid) use ($factory)
     {
+        throw new Exception('Not Supported');
         $controller = new RestApi($factory);
         $uuid = \Lernfeld1011\models\SolarBankUUID::fromString($uuid);
         $factory->createSolarBankReader()->readByUuid($uuid);
