@@ -54,7 +54,7 @@ class SolarBankMapper
             $kilowattPower = $arr['kilowattPower'];
         }
 
-        $coordinate = Coordinate::fromFloat($long, $lat);
+        $coordinate = Coordinate::fromFloat($lat, $long);
 
         return $this->factory->createSolarBank($coordinate, $name, $trafficLightValue, $kilowattPower, $arr['uuid']??'');
     }
