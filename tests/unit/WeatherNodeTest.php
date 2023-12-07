@@ -16,15 +16,15 @@ class WeatherNodeTest extends TestCase
     public function testObjectCanBeCreated(): void
     {
         $coordinate = Coordinate::fromFloat(1.5, -2.5);
-        $date = Date::createFromIntegers(1,1,1970);
-        $this->assertInstanceOf(WeatherNode::class, new WeatherNode($coordinate,$date));
+        $date = Date::createFromIntegers(1, 1, 1970);
+        $this->assertInstanceOf(WeatherNode::class, new WeatherNode($coordinate, $date));
     }
 
     public function testWeatherNodeCanAddWeatherDataSet(): void
     {
         $coordinate = Coordinate::fromFloat(1.5, -2.5);
-        $date = Date::createFromIntegers(1,1,1970);
-        $node = new WeatherNode($coordinate,$date);
+        $date = Date::createFromIntegers(1, 1, 1970);
+        $node = new WeatherNode($coordinate, $date);
         $weatherDataSet = new WeatherDataSet(
             25,
             18.0,

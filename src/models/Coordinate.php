@@ -25,7 +25,7 @@ class Coordinate
     private function ensureIsValid(float $long, float $lat): void
     {
         if (! self::isValid($long, $lat)) {
-            throw new InvalidArgumentException(sprintf('Longitude must be between 180 and - 180, currently is: %s \n Latitude must be between 90 and -90, currently is: %s', $long,$lat));
+            throw new InvalidArgumentException(sprintf('Longitude must be between 180 and - 180, currently is: %s \n Latitude must be between 90 and -90, currently is: %s', $long, $lat));
         }
     }
 

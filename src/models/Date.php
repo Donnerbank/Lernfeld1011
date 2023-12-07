@@ -11,8 +11,6 @@ class Date
 
     private int $year;
 
-    //TODO: DateTime Object
-
     /** private Contructor */
     private function __construct(int $day, int $month, int $year)
     {

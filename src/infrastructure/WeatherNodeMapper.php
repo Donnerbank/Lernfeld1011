@@ -108,7 +108,6 @@ class WeatherNodeMapper
         // assign the above constructed array as sub-array
         $arr['hourlyWeatherData'] = $weatherData;
 
-
         return $arr;
     }
 

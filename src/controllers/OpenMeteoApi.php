@@ -9,8 +9,10 @@ use Lernfeld1011\models\WeatherNode;
 class OpenMeteoApi
 {
     private WeatherNodeMapper $mapper;
+
     private string $url;
 
+    /** Constructs working url and request data from OpenMetoAPI */
     public function __construct(WeatherNodeMapper $mapper, string $url)
     {
         $this->mapper = $mapper;
@@ -19,12 +21,13 @@ class OpenMeteoApi
 
     public function getData(Coordinate $coordinate): WeatherNode
     {
-        $url = sprintf($this->url,$coordinate->getLatitude(), $coordinate->getLongitude());
+        $url = sprintf($this->url, $coordinate->getLatitude(), $coordinate->getLongitude());
+
         return $this->mapper->fromJSON(file_get_contents($url));
     }
 
     public function getMapper(): WeatherNodeMapper
-{
-    return $this->mapper;
-}
+    {
+        return $this->mapper;
+    }
 }

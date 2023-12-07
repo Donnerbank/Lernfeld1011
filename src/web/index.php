@@ -25,37 +25,22 @@ try {
             $controller = new ControllerName();
             $controller->method(parameter1,parameter2,parameter3);
         });*/
-
-    // test the Routing
-    Router::add('/api/v1/restapi/amethod', function () use ($factory) {
-        $controller = new RestApi($factory);
-        $s = $controller->aMethod();
-        echo $s;
-    }, 'get');
-    Router::add('/api/v1/restapi/test', function () use ($factory) {
-        $controller = new RestApi($factory);
-        $uuid = \Lernfeld1011\models\SolarBankUUID::fromString('A63fd87a9B-654fA-46d7N-bef9A-f81bNc360A104b');
-        $factory->createSolarBankReader()->readByUuid($uuid);
-
-        $s = $controller->getWeatherNode($uuid);
-        echo $s;
-    }, 'get');
-    Router::add('/api/v1/restapi/addSolarBank', function () use ($factory)
-    {
+    Router::add('/api/v1/restapi/addSolarBank', function () use ($factory) {
         $json = file_get_contents('php://input');
-        if(empty($json))
+        if (empty($json)) {
             throw new Exception('Provided SolarBank Data is empty.');
+        }
         $controller = new RestApi($factory);
         echo json_encode(['Success' => $controller->addSolarBank($json)]);
     }, 'get');
-    Router::add('/api/v1/restapi/getSolarBankData/(.*)', function ($uuid) use ($factory)
-    {
+    Router::add('/api/v1/restapi/getSolarBankData/(.*)', function ($uuid) use ($factory) {
         throw new Exception('Not Supported');
         $controller = new RestApi($factory);
         $uuid = \Lernfeld1011\models\SolarBankUUID::fromString($uuid);
         $factory->createSolarBankReader()->readByUuid($uuid);
         echo $controller->getWeatherNode($uuid);
     }, 'get');
+    // Retrieve Weather Data for all Solarbanks in Hamburg
     Router::add('/api/v1/restapi/getHamburgWeatherData', function () use ($factory) {
         $controller = new RestApi($factory);
         $s = $controller->getWeatherNodesFromHamburg();
@@ -72,7 +57,7 @@ try {
     // run the Router and check for matched Path
     Router::run($config->getRouterBase());
 } catch (Exception $exception) {
-    $arr = ['response' => 'Error','message' => $exception->getMessage()];
+    $arr = ['response' => 'Error', 'message' => $exception->getMessage()];
     echo json_encode($arr);
 }
 exit();

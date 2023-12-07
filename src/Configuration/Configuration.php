@@ -1,6 +1,7 @@
 <?php
 
 namespace Lernfeld1011\Configuration;
+
 /**
  * Base Configuration
  */
@@ -23,7 +24,7 @@ class Configuration
 
     public function getLocalDsn(): string
     {
-        return 'mysql:host=localhost:3306;dbname=' . $this->getDbName();
+        return 'mysql:host=localhost:3306;dbname='.$this->getDbName();
     }
 
     public function getDbName(): string

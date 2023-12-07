@@ -55,12 +55,12 @@ class Factory
 
     public function createOpenMeteoReader(): OpenMeteoReader
     {
-        return new OpenMeteoReader(new OpenMeteoApi($this->getWeatherNodeMapper(),$this->configuration->meteoApiUrl()));
+        return new OpenMeteoReader(new OpenMeteoApi($this->getWeatherNodeMapper(), $this->configuration->meteoApiUrl()));
     }
 
-    public function createSolarBankReader() : SolarBankReader
+    public function createSolarBankReader(): SolarBankReader
     {
-        return new SolarBankReader($this->createLocalPDO(),$this->getSolarBankMapper());
+        return new SolarBankReader($this->createLocalPDO(), $this->getSolarBankMapper());
     }
 
     public function createSolarBankWriter(): SolarBankWriter
