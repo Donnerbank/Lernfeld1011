@@ -12,7 +12,7 @@ class OpenMeteoApi
 
     private string $url;
 
-    /** Constructs working url and request data from OpenMetoAPI */
+    /** Constructs working url. Is used by OpenMeteoReader */
     public function __construct(WeatherNodeMapper $mapper, string $url)
     {
         $this->mapper = $mapper;

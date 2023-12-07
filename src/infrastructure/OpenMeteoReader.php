@@ -10,6 +10,7 @@ class OpenMeteoReader
 {
     private OpenMeteoApi $meteoApi;
 
+    /** OpenMeteoApi with working url */
     public function __construct(OpenMeteoApi $meteoApi)
     {
         $this->meteoApi = $meteoApi;
